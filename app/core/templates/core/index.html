@@ -1,0 +1,16 @@
+{% extends 'core/layout.html' %}
+{% load static %}
+
+{% block title%} Главная Страница {% endblock %}
+
+{% block content%}
+<div class = "mainPage">
+    <div class = "mainInfo">
+        <h1>
+            <img src = "{% static 'core/img/volume-up dark.svg'%}" alt="Логотип" width="75px" fill = #fff>
+            EasyConcert
+        </h1>
+        Анализируйте данные при работе с концертами!
+    </div>
+</div>
+{% endblock %}

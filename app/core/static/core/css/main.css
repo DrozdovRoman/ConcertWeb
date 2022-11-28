@@ -1,0 +1,39 @@
+body {
+    background: #e9eef4;
+}
+
+main .mainPage {
+    background-color:#4c6be6;
+    border: solid #4c6be6 5px;
+    border-radius: 10px;
+    font-size: 25px;
+    height: 770px;
+    width: 1400px;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    color: #e9eef4;
+    
+    text-align: center;
+}
+
+main .mainPage h1{
+    font-size: 50px;
+}
+
+.mainInfo {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+    margin-top: 20%;
+}
+
+.form-select { 
+    display: block;
+    } 
+    .form-select select{
+        width: 20px;
+    }
+
+

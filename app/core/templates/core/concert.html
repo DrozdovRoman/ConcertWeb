@@ -1,0 +1,100 @@
+{% extends 'core/layout.html' %}
+{% load static %}
+
+{% block title%} Главная Страница {% endblock %}
+
+{% block content%}
+    <div style = "width: 95%; margin-right: auto; margin-left: auto;">
+
+{% if not update %}
+    <h1 class = "mt-4"> Список концертов </h1>
+{% else %}
+    <h1 class = "mt-4 mb-4"> Страница редактирования </h1>
+{% endif %}
+
+
+    <!-- Button trigger modal -->
+{% if not update %}
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" style="position: relative; left:83%">
+    Добавить новый концерт
+</button>
+{% endif %}
+
+{% if success %}
+<p style = "color:red;"> Запись добавлена</p>
+{% endif %}
+
+{% if messages %}
+<div class = "alert alert-success mt-4">
+    {% for m in messages %}
+        {{m}}
+    {% endfor %}
+</div>
+{% endif %}
+
+{% if update %}
+    {% if success_update %}
+    <p style="color:red">Запись обновлена</p>
+    {% endif %}
+
+<form id = "update_data" method="post">
+    <h5>
+    {% csrf_token %}
+    {{form}}
+    </h5>
+</form>
+<p style = "position: absolute; right: 3%;">  <a  class = "btn btn-primary" href="{% url 'concert' %}">Вернуться назад</a> <button form = "update_data" type="submit" class="btn btn-primary ">Обновить</button></p>
+
+
+{% else %}
+    <table class="table table-bordered mt-4">
+        <thead>
+            <tr>
+                <th scope="col">ID</th>
+                <th scope="col">Название Концерта</th>
+                <th scope="col">Город</th>
+                <th scope="col">Дата</th>
+                <th scope="col">Статус</th>
+                <th scope="col">Редактирование</th>
+                <th scope="col">Удаление</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in list_concert%}
+            <tr>
+                <th style="width: 100px;">{{i.id}}</th>
+                <td style="text-align:left; width: 250px;">{{i.name}}</td>
+                <td style="width: 200px;">{{i.city}}</td>
+                <td style="width: 200px;">{{i.concert_date}}</td>
+                <td style="width: 200px;">{{i.status}}</td>
+                <td><a href = "{% url 'update_concert_page' i.id%}"> Редактировать</a></td>
+                <td><a href = "{% url 'delete_concert_page' i.id%}"> Удалить </a></td>
+            </tr>
+            {% endfor %} 
+        </tbody>
+        </table>
+{% endif %}
+            <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Добавление нового концерта</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id = "add_form" method="post">
+                    {% csrf_token %}
+                    {{form}}
+                </form>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+            <button form = "add_form" type="submit" class="btn btn-primary">Сохранить</button>
+            </div>
+        </div>
+        </div>
+    </div>
+
+    </div>
+{% endblock %}
