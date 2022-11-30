@@ -30,8 +30,8 @@ SECRET_KEY = environ.get('SECRET_KEY')
 # DEBUG = True
 DEBUG = int(environ.get('DEBUG', default=0))
 
-# ALLOWED_HOSTS = []
-ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = []
+# ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS').split(' ')
 
 
 # Application definition
@@ -145,3 +145,4 @@ MEDIA_ROOT = BASE_DIR / "media"
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+CELERY_BROKER_URL = "redis://redis:6379"

@@ -1,6 +1,9 @@
 version: '3.8'
 
 services:
+  redis:
+    image: redis
+    restart: always
   web:
     build:
       context: ./app

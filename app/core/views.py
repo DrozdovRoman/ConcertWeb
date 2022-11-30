@@ -4,6 +4,7 @@ from .forms import ConcertForm,SaleForm, TargetForm, SaleCreateForm,TargetCreate
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from django.contrib import messages
+from . import tasks
 
 # Create your views here.
 
@@ -11,7 +12,7 @@ def home(request):
     context = {
 
     }
-    
+    tasks.add.delay(x = 1, y = 2)
     template = "core/index.html"
     return render(request,template,context)
 
