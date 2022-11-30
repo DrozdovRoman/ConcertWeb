@@ -28,4 +28,6 @@ urlpatterns = [
     path('target', views.TargetCreateView.as_view(), name='target'),
     path('update-targetPage/<int:pk>',views.TargetUpdateView.as_view(), name='update_target_page'),
     path('delete-targetPage/<int:pk>',views.delete_target_page, name='delete_target_page'),
+    path('login', views.UserLoginView.as_view(), name='login_page'),
+    path('register', views.UserRegisterView.as_view(), name='register_page'),
 ]

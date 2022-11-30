@@ -1,0 +1,15 @@
+{% extends 'core/layout.html' %}
+{% load static %}
+
+{% block title%} Регистрация пользователя {% endblock %}
+
+{% block content%}
+    <h1 class = "mt-4"> Регистрация</h1>
+    <div class = "col-4">
+    <form id="register_form" method="post">
+        {% csrf_token %}
+        {{form}}
+        <button form = "register_form" type="submit" class="btn btn-primary mt-4">Сохранить</button>
+    </form>
+    </div>
+{% endblock %}

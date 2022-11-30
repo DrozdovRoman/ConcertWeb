@@ -42,20 +42,25 @@
                 <li class="nav-item">
                 <a class="nav-link" href="#">О нас</a>
                 </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                </div>
                 </li>
             </ul>
             </form>
+            </div style = "position: relative;">
+                <!-- <a class="nav-link" style = "color:#000000; font-size: 18px;" href="#">{{request.user}}</a>
+
+                <a class="btn btn-danger" style = "color:#ffffff; height: 40px; display: flex; align-items: center; justify-content: center; margin-left: 15px;"> 
+                    Выход 
+                    <img src = "{% static 'core/img/box-arrow-in-right.svg'%}" alt="Логотип пользователя">
+                </a> -->
+                    {% url 'register_page' as url_register_page %}
+                <a href="{{url_register_page}}" class="btn btn-primary" style=" margin-left: 10px;">
+                    Регистрация
+                </a>
+                    {% url 'login_page' as url_login_page %}
+                <a href="{{url_login_page}}" class="btn btn-light"  style=" margin-left: 10px; margin-right: 10px; border: 1px solid #000000">
+                    Вход
+                </a>
             </div>
-        </div>
         </nav>
     <main>
         {% block content %}

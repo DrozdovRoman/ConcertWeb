@@ -1,10 +1,12 @@
 from django.shortcuts import redirect, render
 from .models import Concert,QticketsSalesInfo, TargetInfo
-from .forms import ConcertForm,SaleForm, TargetForm, SaleCreateForm,TargetCreateForm
+from . forms import ConcertForm,SaleForm, TargetForm, SaleCreateForm,TargetCreateForm,AuthUserForm,RegisterUserForm
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, ListView
 from django.contrib import messages
 from . import tasks
+from django.contrib.auth.views import LoginView
+from django.contrib.auth.models import User
 
 # Create your views here.
 
@@ -12,7 +14,7 @@ def home(request):
     context = {
 
     }
-    tasks.add.delay(x = 1, y = 2)
+    # tasks.add.delay(x = 1, y = 2)
     template = "core/index.html"
     return render(request,template,context)
 
@@ -129,3 +131,20 @@ def delete_target_page(request,pk):
     get_concert = TargetInfo.objects.get(pk = pk)
     get_concert.delete()
     return redirect(reverse('target'))
+
+
+# Представления авторизация
+
+class UserLoginView(LoginView):
+    template_name = 'core/login.html'
+    form_class = AuthUserForm
+    success_url = reverse_lazy('home')
+    def get_success_url(self):
+        return self.success_url
+
+class UserRegisterView(CreateView):
+    model = User
+    template_name = 'core/register_page.html'
+    form_class = RegisterUserForm
+    success_url = reverse_lazy('home')
+    success_msg = 'Пользователь успешно создан'
