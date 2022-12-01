@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class ConcertForm(forms.ModelForm):
     class Meta:
         model = Concert
-        fields = '__all__'
+        fields = ['id', 'name', 'city', 'concert_date', 'status']
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
         self.fields['name'].widget.attrs['class'] = 'form-control mb-3 '

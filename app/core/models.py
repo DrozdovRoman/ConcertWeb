@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Concert(models.Model):
@@ -82,6 +82,7 @@ class Concert(models.Model):
     ("Щелково","Щелково"),("Электросталь","Электросталь"),("Элиста","Элиста"),("Энгельс","Энгельс"),("Южно-Сахалинск","Южно-Сахалинск"),
     ("Юрга","Юрга"),("Якутск","Якутск"),("Ялта","Ялта"),("Ярославль","Ярославль"))
     CHOICE_STATUS = (("Идет","Идет"),("Прошел","Прошел"))
+    author = models.ForeignKey(User, on_delete= models.CASCADE, verbose_name="Автор", blank=True, null=True)
     name = models.CharField(max_length=30, verbose_name = "Название Концерта")
     city = models.CharField(max_length=50, verbose_name = "Город", choices = CHOICE_CITY)
     concert_date =  models.DateField(verbose_name = "Дата")

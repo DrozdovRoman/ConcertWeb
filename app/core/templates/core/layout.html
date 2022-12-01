@@ -46,20 +46,26 @@
             </ul>
             </form>
             </div style = "position: relative;">
-                <!-- <a class="nav-link" style = "color:#000000; font-size: 18px;" href="#">{{request.user}}</a>
-
-                <a class="btn btn-danger" style = "color:#ffffff; height: 40px; display: flex; align-items: center; justify-content: center; margin-left: 15px;"> 
-                    Выход 
-                    <img src = "{% static 'core/img/box-arrow-in-right.svg'%}" alt="Логотип пользователя">
-                </a> -->
+            {% if request.user.is_authenticated %}
+                    <a class="nav-link" style = "color:#000000; font-size: 18px;" href="#">{{request.user}}</a>
+                        {% url 'logout_page' as url_logout_page %}
+                    <a href="{{url_logout_page}}" class="btn btn-danger" style = "color:#ffffff; height: 40px; display: flex; align-items: center; justify-content: center; margin-left: 15px;"> 
+                        Выход 
+                        <img src = "{% static 'core/img/box-arrow-in-right.svg'%}" alt="Логотип пользователя">
+                    </a>
+            {% else %}
                     {% url 'register_page' as url_register_page %}
                 <a href="{{url_register_page}}" class="btn btn-primary" style=" margin-left: 10px;">
-                    Регистрация
+                        Регистрация
                 </a>
                     {% url 'login_page' as url_login_page %}
                 <a href="{{url_login_page}}" class="btn btn-light"  style=" margin-left: 10px; margin-right: 10px; border: 1px solid #000000">
                     Вход
-                </a>
+                </a>    
+            {% endif %}
+
+
+
             </div>
         </nav>
     <main>

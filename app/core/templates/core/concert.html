@@ -59,6 +59,7 @@
         </thead>
         <tbody>
             {% for i in list_concert%}
+            {% if request.user == i.author %}
             <tr>
                 <th style="width: 100px;">{{i.id}}</th>
                 <td style="text-align:left; width: 250px;">{{i.name}}</td>
@@ -66,8 +67,9 @@
                 <td style="width: 200px;">{{i.concert_date}}</td>
                 <td style="width: 200px;">{{i.status}}</td>
                 <td><a href = "{% url 'update_concert_page' i.id%}"> Редактировать</a></td>
-                <td><a href = "{% url 'delete_concert_page' i.id%}"> Удалить </a></td>
+                <td><a href = "{% url 'delete_concert_page' i.id %}"> Удалить </a></td>
             </tr>
+            {% endif %}
             {% endfor %} 
         </tbody>
         </table>

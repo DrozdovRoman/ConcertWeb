@@ -37,6 +37,12 @@ services:
       - 1337:80
     depends_on:
       - web
+  worker:
+    restart: always
+    build: ./app
+    volumes:
+      - ./app/:/usr/src/app/
+    command: celery -A django_project worker -l INFO
 
 volumes:
   postgres_volume:
