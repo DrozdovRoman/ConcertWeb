@@ -1,15 +1,17 @@
 {% extends 'core/layout.html' %}
 {% load static %}
 
-{% block title%} Авторизация пользователя {% endblock %}
+{% block title %} Авторизация пользователя {% endblock %}
 
 {% block content%}
-    <h1 class = "mt-4"> Авторизация</h1>
-    <div class = "col-4">
-        <form id="login_form" method="post">
+<div class = "mainPage">
+    <div class = "authForm">
+        <h1 class = "mt-4 mb-4" style= "width: 100%;"> Авторизация </h1>
+        <form id="login_form" method="post" style="margin-bottom: 200px; width: 350px;">
             {% csrf_token %}
             {{form}}
             <button form = "login_form" type="submit" class="btn btn-primary mt-4">Сохранить</button>
         </form>
-        </div>
+    </div>
+</div>
 {% endblock %}

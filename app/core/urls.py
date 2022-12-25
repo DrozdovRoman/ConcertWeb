@@ -27,13 +27,16 @@ urlpatterns = [
 
     path('sell', views.SellCreateView.as_view(), name='sell'),
     path('update-sellPage/<int:pk>',views.SellUpdateView.as_view(), name='update_sell_page'),
-    path('delete-sellPage/<int:pk>',views.delete_sell_page, name='delete_sell_page'),
+    path('delete-sellPage/<int:pk>',views.SellDeleteView.as_view(), name='delete_sell_page'),
 
     path('target', views.TargetCreateView.as_view(), name='target'),
     path('update-targetPage/<int:pk>',views.TargetUpdateView.as_view(), name='update_target_page'),
-    path('delete-targetPage/<int:pk>',views.delete_target_page, name='delete_target_page'),
+    path('delete-targetPage/<int:pk>',views.TargetDeleteView.as_view(), name='delete_target_page'),
 
     path('login', views.UserLoginView.as_view(), name='login_page'),
     path('register', views.UserRegisterView.as_view(), name='register_page'),
     path('logout', views.UserLogout.as_view(), name='logout_page'),
+
+    path('control_panel', views.ControlPanelPage.as_view(), name='control_panel_page'),
+    path('update_test/', views.TestUpdate, name='update_test_page'),
 ]

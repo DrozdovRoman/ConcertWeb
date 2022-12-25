@@ -138,3 +138,8 @@ GitHub.sublime-settings
 !.vscode/launch.json 
 !.vscode/extensions.json 
 .history
+
+credentials.json
+TokenVkApi.py
+PasswordQtickets.py
+/app/accountInfo

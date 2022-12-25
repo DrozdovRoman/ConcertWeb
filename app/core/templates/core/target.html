@@ -50,7 +50,6 @@
     <table class="table table-bordered mt-2">
         <thead>
             <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Концерт</th>
                 <th scope="col">ID Личного кабинета</th>
                 <th scope="col">ID Концерта</th>
@@ -60,14 +59,15 @@
         </thead>
         <tbody>
             {% for targetInfo in list_concert %}
+            {% if request.user == targetInfo.cat.author %}
             <tr>
-                <th style="width: 100px;">{{targetInfo.id}}</th>
-                <td style="text-align:left; width: 250px;">{{targetInfo.cat}}</td>
-                <td style="width: 200px;">{{targetInfo.targetAccountID}}</td>
-                <td style="width: 200px;">{{targetInfo.targetCompanyID}}</td>
+                <td style="text-align:left; width: 350px;">{{targetInfo.cat}}</td>
+                <td style="width: 300px;">{{targetInfo.targetAccountID}}</td>
+                <td style="width: 300px;">{{targetInfo.targetCompanyID}}</td>
                 <td><a href = "{% url 'update_target_page' targetInfo.id%}"> Редактировать</a></td>
                 <td><a href = "{% url 'delete_target_page' targetInfo.id%}"> Удалить </a></td>
             </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
         </table>

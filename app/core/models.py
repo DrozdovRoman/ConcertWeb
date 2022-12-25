@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+
 # Create your models here.
 
 class Concert(models.Model):
@@ -83,6 +84,7 @@ class Concert(models.Model):
     ("Юрга","Юрга"),("Якутск","Якутск"),("Ялта","Ялта"),("Ярославль","Ярославль"))
     CHOICE_STATUS = (("Идет","Идет"),("Прошел","Прошел"))
     author = models.ForeignKey(User, on_delete= models.CASCADE, verbose_name="Автор", blank=True, null=True)
+    spreadSheetPositon = models.PositiveSmallIntegerField(verbose_name="Позиция в гугл таблице", blank=True, null=True)
     name = models.CharField(max_length=30, verbose_name = "Название Концерта")
     city = models.CharField(max_length=50, verbose_name = "Город", choices = CHOICE_CITY)
     concert_date =  models.DateField(verbose_name = "Дата")
@@ -96,6 +98,7 @@ class Concert(models.Model):
 class TargetInfo(models.Model):
     targetAccountID = models.CharField(max_length=10, verbose_name = "ID Личного кабинета клиента")
     targetCompanyID = models.CharField(max_length=10, verbose_name = "ID Концерта")
+    spreadSheetTargetPosition = models.PositiveSmallIntegerField(verbose_name="Номер подключенного аккаунта", blank=True, null=True)
     cat = models.ForeignKey(Concert, on_delete = models.CASCADE, verbose_name = "Концерт")
     def __str__(self):
         return self.targetCompanyID
@@ -103,6 +106,7 @@ class TargetInfo(models.Model):
 class QticketsSalesInfo(models.Model):
     qticketsConcertID = models.CharField(max_length=6, verbose_name = "ID продажи билетов")
     qticketsAccountName = models.CharField(max_length = 30, verbose_name = "Название аккаунта Qtickets")
+    spreadSheetQticketsPosition = models.PositiveSmallIntegerField(verbose_name="Номер подключенного аккаунта", blank=True, null=True)
     cat = models.ForeignKey(Concert, on_delete = models.CASCADE, verbose_name = "Концерт")
     def __str__(self):
         return self.qticketsConcertID

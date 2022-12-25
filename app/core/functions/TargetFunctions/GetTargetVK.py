@@ -26,7 +26,7 @@ import vk_api
         # 1) ID кампании
         # 2) Сумма потраченная за указанный период
 
-def GetTarget(targetTockentInfo, targetDataInfo):
+def GetTargetVK(targetTockentInfo, targetDataInfo):
     try:
         VK_API_TOKEN = targetTockentInfo["targetRoman"]["token"]
         session = vk_api.VkApi(token = VK_API_TOKEN)
@@ -34,7 +34,7 @@ def GetTarget(targetTockentInfo, targetDataInfo):
         result = vkTargetSession.ads.getStatistics(account_id = targetDataInfo["settings"]["account_id"], ids_type = targetDataInfo["settings"]["ids_type"],
         period = targetDataInfo["settings"]["period"], date_from = targetDataInfo["settings"]["date_from"], date_to = targetDataInfo["settings"]["date_to"],
         ids = targetDataInfo["settings"]["ids"])
-        spentSumArray = [[element["id"], float(element["stats"][0].get("spent",0))] if len(element["stats"]) != 0 else [element["id"], None] for element in result] 
+        spentSumArray = [[element["id"], float(element["stats"][0].get("spent",0))] if len(element["stats"]) != 0 else [element["id"], "0"] for element in result] 
         return spentSumArray
     except:
         return(["Error!","Error!"])

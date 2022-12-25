@@ -1,0 +1,15 @@
+{% extends 'core/layout.html' %}
+{% load static %}
+
+{% block title%} Панель управления {% endblock %}
+
+{% block content%}
+<div style = "width: 95%; margin-right: auto; margin-left: auto;">
+    <h1 class = "mt-4" style = "text-align: center;"> Панель управления </h1>
+    
+    <form method="get" action="{% url 'update_test_page'%}">
+        <h4 > Выберите дату обновления <input name="day_update" type="date"/> <input type="submit" value="Обновить" class = "btn btn-primary" /> </h4>
+    </form>
+    
+</div>
+{% endblock %}

@@ -44,4 +44,19 @@ def TargetDataInfoYesterday(account_id, idArray):
         }
     }
     return targetDataInfo
-    
+
+
+def TargetDataInfoDate(account_id, idArray, set_date):
+    ids = ",".join(idArray)
+    targetDataInfo = {
+        "settings" : 
+        {
+            "account_id": account_id,
+            "ids_type" : "campaign",
+            "period" : "day",
+            "date_from" : str(set_date.date()),
+            "date_to" : str(set_date.date()),
+            "ids" : ids
+        }
+    }
+    return targetDataInfo

@@ -38,13 +38,15 @@
     <p style="color:red">Запись обновлена</p>
     {% endif %}
 
+<div style=" display:flex; flex-wrap: wrap; align-items: center; justify-content: center;">
 <form id = "update_data" method="post">
     {% csrf_token %}
     <h3 class ='mb-4 mt-4'>{{account}}</h3>
-    <h5>
+    <h5 class = ''>
     {{form}}
     </h5>
 </form>
+</div>
 <p style = "position: absolute; right: 3%;">  <a  class = "btn btn-primary" href="{% url 'sell' %}">Вернуться назад</a> <button form = "update_data" type="submit" class="btn btn-primary ">Обновить</button></p>
 
 
@@ -52,7 +54,6 @@
     <table class="table table-bordered mt-2">
         <thead>
             <tr>
-                <th scope="col">ID</th>
                 <th scope="col">Концерт</th>
                 <th scope="col">Аккаунт Qtickets</th>
                 <th scope="col">ID мероприятия</th>
@@ -62,14 +63,15 @@
         </thead>
         <tbody>
             {% for qticketsInfo in list_concert %}
+            {% if request.user == qticketsInfo.cat.author %}
             <tr>
-                <th style="width: 100px;">{{qticketsInfo.id}}</th>
-                <td style="text-align:left; width: 250px;">{{qticketsInfo.cat}}</td>
-                <td style="width: 200px;">{{qticketsInfo.qticketsAccountName}}</td>
-                <td style="width: 200px;">{{qticketsInfo.qticketsConcertID}}</td>
+                <td style="text-align:left; width: 350px;">{{qticketsInfo.cat}}</td>
+                <td style="width: 300px;">{{qticketsInfo.qticketsAccountName}}</td>
+                <td style="width: 300px;">{{qticketsInfo.qticketsConcertID}}</td>
                 <td><a href = "{% url 'update_sell_page' qticketsInfo.id%}"> Редактировать</a></td>
                 <td><a href = "{% url 'delete_sell_page' qticketsInfo.id%}"> Удалить </a></td>
             </tr>
+            {% endif %}
             {% endfor %}
         </tbody>
         </table>
