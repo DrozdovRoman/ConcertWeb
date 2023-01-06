@@ -1,23 +1,26 @@
-body {
-    background: #e9eef4;
+*{
+    box-sizing: border-box;
 }
 
-main .mainPage {
+html, body{
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.mainPage {
     background-color:#4c6be6;
     border: solid #4c6be6 5px;
     border-radius: 10px;
     font-size: 25px;
-    height: 770px;
-    width: 1400px;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
+    height: calc(100% - 63px);
+    width: calc(100% - 10px);
+    margin:  auto ;
     color: #e9eef4;
-    
     text-align: center;
 }
 
-main .mainPage h1{
+.mainPage h1{
     font-size: 50px;
 }
 

@@ -19,22 +19,17 @@
     <h1 class = "mt-4"> Страница редактирования</h1>
 {% endif %}
 
-{% if success %}
-<p style = "color:red;"> Запись добавлена</p>
-{% endif %}
-
 {% if messages %}
-<div class = "alert alert-success mt-2">
-    {% for m in messages %}
-        {{m}}
-    {% endfor %}
-</div>
+<a>
+    <div class = "alert alert-success mt-2">
+        {% for m in messages %}
+            {{m}}
+        {% endfor %}
+    </div>
+</a>
 {% endif %}
 
 {% if update %}
-    {% if success_update %}
-    <p style="color:red">Запись обновлена</p>
-    {% endif %}
 
 <form id = "update_data" method="post">
     {% csrf_token %}
