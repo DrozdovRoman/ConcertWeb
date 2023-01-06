@@ -28,9 +28,9 @@ SECRET_KEY = environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
-DEBUG = int(environ.get('DEBUG', default=0))
+DEBUG = int(environ.get('DEBUG', default= 0))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 # ALLOWED_HOSTS = environ.get('ALLOWED_HOSTS').split(' ')
 
 
