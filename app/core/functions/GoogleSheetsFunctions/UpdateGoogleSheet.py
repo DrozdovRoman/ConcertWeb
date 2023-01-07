@@ -23,14 +23,17 @@ def UpdateTable(target, sell, concertInfo, date):
 
         for z in target:
             if (x['id'] == z['cat_id']):
-                if(x.get('targetCompanyID') != None):
+                if(x.get('targetCompanyID') != None and x.get('sum_date' != None) and x.get('sum_overall') != None):
                     x['targetCompanyID'].append(z['targetCompanyID'])
                     x['sum_date'].append(z['sum_date'])
                     x['sum_overall'].append(z['sum_overall'])
                 else:
-                    x['targetCompanyID'] = [z['targetCompanyID']]
-                    x['sum_date'] = [z['sum_date']]
-                    x['sum_overall'] = [z['sum_overall']]
+                    if (z.get('targetCompanyID')):
+                        x['targetCompanyID'] = [z['targetCompanyID']]
+                    if (z.get('sum_date')):
+                        x['sum_date'] = [z['sum_date']]
+                    if (z.get('sum_overall')):
+                        x['sum_overall'] = [z['sum_overall']]
     
     UpdateOverall(concertInfo)
     UpdateDate(concertInfo,date)
@@ -129,7 +132,7 @@ def UpdateDate(concertInfo, date):
                 for i in range(len(element['qticketsConcertID'])):
                     concertName.append(element['name'])
                     concertCity.append(element['city'])
-                    idQtickets.append(f''' ="{element['qticketsConcertID'][i]}" ''')
+                    idQtickets.append(f'''="{element['qticketsConcertID'][i]}" ''')
                     countDateTicket.append(element['result_date'][i]['totalResult'][0])
                     sumDateTicket.append(element['result_date'][i]['totalResult'][1])
                     countDateFreeTickets.append(element['result_date'][i]['giftTicketResult'][0])

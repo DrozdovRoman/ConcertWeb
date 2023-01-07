@@ -26,7 +26,7 @@ class SaleForm(forms.ModelForm):
     def __init__(self,*args,**kwargs):
         super().__init__(*args,**kwargs)
         self.fields['qticketsConcertID'].widget.attrs['class'] = 'form-control mb-3 '
-        self.fields['qticketsAccountName'].widget.attrs['class'] = 'form-control mb-3 '
+        self.fields['qticketsAccountName'].widget.attrs['class'] = 'form-select mb-3 '
 
 class SaleCreateForm(forms.ModelForm):
     class Meta:
@@ -39,7 +39,7 @@ class SaleCreateForm(forms.ModelForm):
         super().__init__(*args,**kwargs)
         self.fields['cat'].widget.attrs['class'] = 'form-select mb-3 '
         self.fields['qticketsConcertID'].widget.attrs['class'] = 'form-control mb-3 '
-        self.fields['qticketsAccountName'].widget.attrs['class'] = 'form-control mb-3 '
+        self.fields['qticketsAccountName'].widget.attrs['class'] = 'form-select mb-3 '
 
 class TargetForm(forms.ModelForm):
     class Meta:

@@ -105,7 +105,7 @@ class TargetInfo(models.Model):
 
 class QticketsSalesInfo(models.Model):
     qticketsConcertID = models.CharField(max_length=6, verbose_name = "ID продажи билетов")
-    qticketsAccountName = models.CharField(max_length = 30, verbose_name = "Название аккаунта Qtickets")
+    qticketsAccountName = models.CharField(max_length = 30, verbose_name = "Название аккаунта Qtickets", choices=(("admin11","admin11"),("domino.dya@mail.ru","domino.dya@mail.ru"),("psu.ekm1-2@yandex.ru","psu.ekm1-2@yandex.ru")))
     spreadSheetQticketsPosition = models.PositiveSmallIntegerField(verbose_name="Номер подключенного аккаунта", blank=True, null=True)
     cat = models.ForeignKey(Concert, on_delete = models.CASCADE, verbose_name = "Концерт")
     def __str__(self):

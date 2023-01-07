@@ -18,8 +18,6 @@ def GetTarget(targetInfo, date):
         overall_temp = TargetDataInfoOverall(int(cabinetID), CompanyArrID)
         result_date.extend(GetTargetVK(targetTockentInfo, date_temp))
         result_overall.extend(GetTargetVK(targetTockentInfo, overall_temp))
-    print(result_date)
-    print("xxx")
     for x in result_date:
         for y in targetInfo:
             if str(x[0]) == y['targetCompanyID']:
